@@ -161,3 +161,6 @@ print(add_eml(1.25, 2.5))
 print(sin_eml(1.25))
 print(pi_eml())
 ```
+
+# References
+Andrzej Odrzywołek. (2026). All elementary functions from a single binary operator. arXiv preprint, arXiv:2603.21852[cs.SC], 2026
