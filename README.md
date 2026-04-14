@@ -163,4 +163,4 @@ print(pi_eml())
 ```
 
 # References
-Andrzej Odrzywołek. (2026). All elementary functions from a single binary operator. arXiv preprint, arXiv:2603.21852[cs.SC], 2026
+Andrzej Odrzywołek. All elementary functions from a single binary operator. arXiv preprint, arXiv:2603.21852[cs.SC], 2026
