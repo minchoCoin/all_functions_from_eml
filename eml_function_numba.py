@@ -1,18 +1,7 @@
 from __future__ import annotations
 
 import numpy as np
-
-try:
-    from numba import njit
-    NUMBA_AVAILABLE = True
-except ImportError:  # pragma: no cover - fallback for environments without numba
-    NUMBA_AVAILABLE = False
-
-    def njit(*args, **kwargs):
-        def decorator(func):
-            return func
-
-        return decorator
+from numba import njit
 
 
 @njit(cache=True)
@@ -250,6 +239,5 @@ def atanh_eml(x):
 
 
 if __name__ == "__main__":
-    print("numba available:", NUMBA_AVAILABLE)
     print("pi =", pi_eml())
     print("sin(1.25) =", sin_eml(1.25))
