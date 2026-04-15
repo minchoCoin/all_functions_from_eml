@@ -8,6 +8,7 @@ This repository now contains Python and C implementations:
 - [eml_functions_numpy.py](eml_functions_numpy.py): NumPy broadcasting version
 - [eml_function_numba.py](eml_function_numba.py): Numba-friendly scalar version
 - [eml.h](c/eml.h), [eml.c](c/eml.c): C implementations using `math.h` and `complex.h`
+
 The only primitive is:
 
 ```text
