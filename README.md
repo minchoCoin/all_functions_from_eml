@@ -81,7 +81,7 @@ atanh(x) = DIV(LOG(DIV(ADD(1,x),SUB(1,x))),2)
 
 ## Figure-To-Formula Mapping
 
-The first uploaded figure shows five exact EML trees. The strings below are written to match those tree examples one-for-one.
+Figure 1 shows five exact EML trees. The strings below are written to match those tree examples one-for-one.
 
 ### 1. `ln x`
 
@@ -164,3 +164,5 @@ print(pi_eml())
 
 # References
 Andrzej Odrzywołek. All elementary functions from a single binary operator. arXiv preprint, arXiv:2603.21852[cs.SC], 2026
+
+[https://github.com/VA00/SymbolicRegressionPackage](https://github.com/VA00/SymbolicRegressionPackage)
