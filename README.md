@@ -2,12 +2,12 @@
 
 Implementation of the paper "All elementary functions from a single binary operator" (arXiv:2603.21852).
 
-This repository now contains three Python implementations:
+This repository now contains Python and C implementations:
 
 - [eml_functions.py](eml_functions.py): scalar `cmath` version
 - [eml_functions_numpy.py](eml_functions_numpy.py): NumPy broadcasting version
 - [eml_function_numba.py](eml_function_numba.py): Numba-friendly scalar version
-
+- [eml.h](c/eml.h), [eml.c](c/eml.c): C implementations using `math.h` and `complex.h`
 The only primitive is:
 
 ```text
@@ -152,7 +152,7 @@ MUL(x,y) = EXP(ADD(LOG(x),LOG(y)))
 - `eml_functions_numpy.py` supports scalar inputs and NumPy arrays through broadcasting.
 - `eml_function_numba.py` keeps the same formulas in a Numba-friendly scalar form and falls back to plain Python if `numba` is not installed.
 
-## Quick Example
+## Quick Python Example
 
 ```python
 from eml_functions import add_eml, sin_eml, pi_eml
@@ -160,6 +160,43 @@ from eml_functions import add_eml, sin_eml, pi_eml
 print(add_eml(1.25, 2.5))
 print(sin_eml(1.25))
 print(pi_eml())
+```
+
+## Quick C Example
+```c
+//main.c example
+#include "eml.h"
+
+#include <complex.h>
+#include <stdio.h>
+
+static void print_complex(const char *label, double complex z) {
+    printf("%-10s = %.15f%+.15fi\n", label, creal(z), cimag(z));
+}
+
+static void run_basic_tests(void) {
+    double complex x = 1.25 + 0.0 * I;
+    double complex y = 2.50 + 0.0 * I;
+
+    puts("Arithmetic");
+    print_complex("x+y", eml_add(x, y));
+    print_complex("x-y", eml_sub(x, y));
+    print_complex("x*y", eml_mul(x, y));
+
+    puts("Constants");
+    print_complex("e", eml_e());
+    print_complex("i", eml_i());
+    print_complex("pi", eml_pi());
+    puts("");
+}
+int main(void) {
+    run_basic_tests();
+    return 0;
+}
+```
+
+```bash
+gcc -std=c11 -O2 -o eml_demo main.c eml.c -lm
 ```
 
 # References
